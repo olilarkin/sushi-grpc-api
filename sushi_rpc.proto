@@ -1,6 +1,7 @@
 /** gRPC definitions for external control of sushi
  *
  * @copyright 2018 - 2022 Modern Ancient Instruments Networked AB, dba Elk, Stockholm
+ * Modified/Added by Oliver Larkin @Copyright 2026
  */
 
 syntax = "proto3";
@@ -199,6 +200,15 @@ service SessionController
 {
     rpc SaveSession (GenericVoidValue) returns (SessionState) {}
     rpc RestoreSession (SessionState) returns (GenericVoidValue) {}
+}
+
+service EditorController
+{
+    rpc HasEditor (ProcessorIdentifier) returns (GenericBoolValue) {}
+    rpc OpenEditor (ProcessorIdentifier) returns (EditorInfo) {}
+    rpc CloseEditor (ProcessorIdentifier) returns (GenericVoidValue) {}
+    rpc IsEditorOpen (ProcessorIdentifier) returns (GenericBoolValue) {}
+    rpc SetContentScaleFactor (ContentScaleRequest) returns (GenericVoidValue) {}
 }
 
 service NotificationController
@@ -852,4 +862,16 @@ message SessionState
     MidiState               midi_state = 4;
     EngineState             engine_state = 5;
     repeated TrackState     tracks = 6;
+}
+
+message EditorInfo
+{
+    int32 width = 1;
+    int32 height = 2;
+}
+
+message ContentScaleRequest
+{
+    ProcessorIdentifier processor = 1;
+    float scale_factor = 2;
 }
