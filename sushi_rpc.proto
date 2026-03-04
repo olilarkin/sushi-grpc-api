@@ -201,6 +201,15 @@ service SessionController
     rpc RestoreSession (SessionState) returns (GenericVoidValue) {}
 }
 
+service EditorController
+{
+    rpc HasEditor (ProcessorIdentifier) returns (GenericBoolValue) {}
+    rpc OpenEditor (ProcessorIdentifier) returns (EditorInfo) {}
+    rpc CloseEditor (ProcessorIdentifier) returns (GenericVoidValue) {}
+    rpc IsEditorOpen (ProcessorIdentifier) returns (GenericBoolValue) {}
+    rpc SetContentScaleFactor (ContentScaleRequest) returns (GenericVoidValue) {}
+}
+
 service NotificationController
 {
     rpc SubscribeToTransportChanges (GenericVoidValue) returns (stream TransportUpdate) {}
@@ -852,4 +861,16 @@ message SessionState
     MidiState               midi_state = 4;
     EngineState             engine_state = 5;
     repeated TrackState     tracks = 6;
+}
+
+message EditorInfo
+{
+    int32 width = 1;
+    int32 height = 2;
+}
+
+message ContentScaleRequest
+{
+    ProcessorIdentifier processor = 1;
+    float scale_factor = 2;
 }
