@@ -549,6 +549,7 @@ message PluginType
         LV2 = 4;
         CLAP = 5;
         AUV2 = 6;
+        CMAJOR = 7;
     }
     Type type = 1;
 }
@@ -759,6 +760,7 @@ message ProcessorUpdate
         DUMMY = 0;
         PROCESSOR_ADDED = 1;
         PROCESSOR_DELETED = 2;
+        PROCESSOR_UPDATED = 3;
     }
     Action              action = 1;
     ProcessorIdentifier processor = 2;
