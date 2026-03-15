@@ -550,6 +550,7 @@ message PluginType
         CLAP = 5;
         AUV2 = 6;
         CMAJOR = 7;
+        JSFX = 8;
     }
     Type type = 1;
 }
