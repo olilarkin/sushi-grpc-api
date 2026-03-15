@@ -591,6 +591,7 @@ message CreateProcessorRequest
     PluginType type = 4;
     TrackIdentifier track = 5;
     ProcessorPosition position = 6;
+    string source_code = 7;
 }
 
 message MoveProcessorRequest
