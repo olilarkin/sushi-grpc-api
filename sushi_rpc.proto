@@ -551,6 +551,7 @@ message PluginType
         AUV2 = 6;
         CMAJOR = 7;
         JSFX = 8;
+        FAUST = 9;
     }
     Type type = 1;
 }
