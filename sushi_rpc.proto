@@ -101,6 +101,7 @@ service ParameterController
     rpc GetParameterValue (ParameterIdentifier) returns (FloatResponse) {}
     rpc GetParameterValueInDomain (ParameterIdentifier) returns (FloatResponse) {}
     rpc GetParameterValueAsString (ParameterIdentifier) returns (StringResponse) {}
+    rpc GetParameterValueAsStringFromValue (ParameterValue) returns (StringResponse) {}
     rpc SetParameterValue (ParameterValue) returns (CommandResponse) {}
 
     rpc GetTrackProperties (TrackIdentifier) returns (PropertyInfoListResponse) {}
@@ -518,6 +519,10 @@ message ProcessorInfo
     string name = 3;
     int32  parameter_count = 4;
     int32  program_count = 5;
+    int32  input_channels = 6;
+    int32  output_channels = 7;
+    bool   supports_midi_input = 8;
+    bool   supports_midi_output = 9;
 }
 
 message ProcessorInfoResponse
@@ -614,6 +619,7 @@ message ParameterInfo
     bool automatable = 6;
     float min_domain_value = 7;
     float max_domain_value = 8;
+    bool is_enumeration = 9;
 }
 
 message ParameterInfoResponse
